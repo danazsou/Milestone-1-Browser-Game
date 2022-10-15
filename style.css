@@ -1,0 +1,11 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: rgb(17, 146, 226);
+    color: rgb(246, 234, 234);
+    font-family: sans-serif, Arial, Helvetica; 
+    display: flex;
+    justify-content: center;
+    align-items:
+ 
+}

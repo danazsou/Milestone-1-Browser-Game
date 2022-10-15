@@ -1,10 +1,10 @@
 const game = document.getElementById('game')
 
-const scoreDisplay = document.getElementById('score')
+const scoreBoard = document.getElementById('score')
 
 
-const scienceNature = 11
-const level = ['easy', 'medium', 'hard']
-function addGenre() {
+const scienceNature = 10
+const levels = ['easy', 'medium', 'hard']
 
-}
+
+
