@@ -22,6 +22,22 @@ function newCategory() {
        const card = document.createElement('div')
        card.classList.add('card')
        column.append(card)
+
+       //if statements for point system
+       if (level === 'easy') {
+        card.innerHTML = 100
+       }
+ 
+       if (level === 'medium') {
+        card.innerHTML = 200
+       }
+
+       if (level === 'hard') {
+        card.innerHTML = 300
+       }
+
+
+
      
 
     
@@ -33,7 +49,7 @@ function newCategory() {
             .then(data => {
                 console.log(data)
                 card.setAttribute('data-question', data.results[0].question)
-                card.setAttribute('data-answer', data.results[0])
+                card.setAttribute('data-answer', data.results[0].correct_answer)
 
              
         })
