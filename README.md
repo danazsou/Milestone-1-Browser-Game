@@ -1,4 +1,4 @@
-This game is inspired by the rivia games I play with friends and family when we get together. 
+This game is inspired by the my time working with kids and using trivia games as a fun way to supplement their education and just to have fun.
 
 This is a simple but fun trivia game that can be enjoyed by all. 
 It will have three categories
