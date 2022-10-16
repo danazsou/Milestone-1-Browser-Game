@@ -22,6 +22,8 @@ function newCategory() {
        const card = document.createElement('div')
        card.classList.add('card')
 
+    
+
 
         //will cosole log the data to see if api loops correctly
             fetch(`https://opentdb.com/api.php?amount=1&category=17&difficulty=${level}&type=multiple`)
