@@ -2,7 +2,7 @@ const game = document.getElementById('game')
 
 const scoreBoard = document.getElementById('score')
 
-
+//creating  an object array to create different categories/columns
 const category = [
     {
         name: 'Science and Nature',
@@ -44,7 +44,7 @@ function newCategory(category) {
       
         //will cosole log the data to see if api loops correctly
         //will go with chaining method so i don't have to keep going back to HTML
-            fetch(`https://opentdb.com/api.php?amount=1&category=${category}&difficulty=${level}&type=multiple`)
+            fetch(`https://opentdb.com/api.php?amount=1&category=${category.id}&difficulty=${level}&type=multiple`)
             .then(response => response.json())
             .then(data => {
                 console.log(data)
