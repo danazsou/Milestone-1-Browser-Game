@@ -5,8 +5,8 @@ const scoreBoard = document.getElementById('score')
 //creating  an object array to create different categories/columns using category id number in API
 const category = [
     {
-        name: 'Science and Nature',
-        id: 17
+     name: 'Science and Nature',
+     id: 17
 },
 
 
@@ -66,6 +66,7 @@ function newCategory(category) {
       
         //will cosole log the data to see if api loops correctly
         //will go with chaining method so i don't have to keep going back to HTML
+        //google searched " trvia game api" opentdb was first opyion
             fetch(`https://opentdb.com/api.php?amount=1&category=${category.id}&difficulty=${level}&type=multiple`)
             .then(response => response.json())
             .then(data => {
@@ -91,4 +92,22 @@ category.forEach(category => newCategory(category))
 
 function flipCard() {
     console.log('clicked')
+
+
+    const textDisplay = document.createElement('div')
+    const buttonA = document.createElement('button')
+    const buttonB = document.createElement('button')
+    const buttonC = document.createElement('button')
+
+    buttonA.innerHTML = 'A'
+    buttonB.innerHTML = 'B'
+    buttonC.innerHTML = 'C'
+
+    //using js "getAttribute" method to insert question on card
+    textDisplay.innerHTML = this.getAttribute('question')
+
+    this.append(textDisplay, buttonA, buttonB, buttonC)
+
+
+
 }
