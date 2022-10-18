@@ -2,11 +2,23 @@ const game = document.getElementById('game')
 
 const scoreBoard = document.getElementById('score')
 
-//creating  an object array to create different categories/columns
+//creating  an object array to create different categories/columns using category id number in API
 const category = [
     {
         name: 'Science and Nature',
         id: 17
+}
+
+
+{
+    name: 'Video Games',
+    id: 15
+}
+
+
+{
+    name: 'Geography',
+    id: 22
 }
 ]
 const levels = ['easy', 'medium', 'hard']
