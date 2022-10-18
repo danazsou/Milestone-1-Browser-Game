@@ -46,17 +46,24 @@ function newCategory() {
             .then(response => response.json())
             .then(data => {
                 console.log(data)
-                card.setAttribute('data-question', data.results[0].question)
-                card.setAttribute('data-answer', data.results[0].correct_answer)
+                card.setAttribute('question', data.results[0].question)
+                card.setAttribute('answer', data.results[0].correct_answer)
                 //added point value below and checked console. it worked. point value shows up in div class
-                card.setAttribute('data-value', card.getInnerHTML())
-            
-                
-             
+                card.setAttribute('points-value', card.getInnerHTML())
+               
         })
+
+        //set event listener for button event type 'click'
+        card.addEventListener('click', flipCard)
+
+
     })
 
 
 }
 
 newCategory()
+
+function flipCard() {
+    console.log('clicked')
+}
