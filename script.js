@@ -86,8 +86,8 @@ function newCategory(category) {
 
 }
 
-newCategory(category[0])
-
+//create loop for array objects(categories) to pass through newCategory function
+category.forEach(category => newCategory(category))
 
 function flipCard() {
     console.log('clicked')
