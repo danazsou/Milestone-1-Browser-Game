@@ -12,7 +12,7 @@ const category = [
 const levels = ['easy', 'medium', 'hard']
 
 
-function newCategory(category[0]) {
+function newCategory(category) {
 
     const column = document.createElement('div')
     column.classList.add('genre-column')
@@ -64,7 +64,8 @@ function newCategory(category[0]) {
 
 }
 
-newCategory(scienceAndNature)
+newCategory(category[0])
+
 
 function flipCard() {
     console.log('clicked')
