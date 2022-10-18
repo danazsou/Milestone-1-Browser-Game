@@ -7,20 +7,30 @@ const category = [
     {
         name: 'Science and Nature',
         id: 17
-}
+},
 
 
 {
     name: 'Video Games',
     id: 15
-}
+},
 
 
 {
     name: 'Geography',
     id: 22
-}
+},
+
+
+{
+    name:'Computer Science',
+    id: 18
+},
+
+
 ]
+
+
 const levels = ['easy', 'medium', 'hard']
 
 
