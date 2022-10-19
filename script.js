@@ -108,6 +108,31 @@ function flipCard() {
 
     this.append(textDisplay, buttonA, buttonB, buttonC)
 
+//disable eventlistener bc display repeats after each click
+/* followed following example from stack overflow:
+ https://stackoverflow.com/questions/4402287/javascript-remove-event-listener
 
+ however; 
+
+
+function myClick(event) {
+    click_count++;
+    if(click_count == 50) {
+       // to remove
+       canvas.removeEventListener('click', myClick); 
+    }
+}
+
+// to add
+canvas.addEventListener('click', myClick);
+
+
+*/
+const allCards = Array.from(document.querySelectorAll('.card'))
+allCards.forEach(card => card.removeEventListener('click', flipCard))
+
+buttonA.addEventListener('click', revealAnswer)
+buttonB.addEventListener('click', revealAnswer)
+buttonC.addEventListener('click', revealAnswer)
 
 }
