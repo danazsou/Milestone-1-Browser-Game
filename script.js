@@ -3,6 +3,12 @@ const game = document.getElementById('game')
 const scoreBoard = document.getElementById('score')
 
 //creating  an object array to create different categories/columns using category id number in API
+
+/* refferred tp stackoverflow for making array for category:
+https://stackoverflow.com/questions/62781078/create-api-for-multidimensonal-array-using-category-subcategory-and-further-sub
+
+*/
+
 const category = [
     {
      name: 'Science and Nature',
@@ -37,7 +43,7 @@ const levels = ['easy', 'medium', 'hard']
 function newCategory(category) {
 
     const column = document.createElement('div')
-    column.classList.add('genre-column')
+    column.classList.add('category-column')
     column.innerHTML = category.name
     game.append(column)
 
@@ -45,7 +51,7 @@ function newCategory(category) {
     //use below api to loop through levels array using .forEach 
     levels.forEach(level => {
         
-        //locally scoped below so okay to use const
+        //locally scoped below so okay to use const vs let 
        const card = document.createElement('div')
        card.classList.add('card')
        column.append(card)
@@ -64,9 +70,9 @@ function newCategory(category) {
        }
 
       
-        //will cosole log the data to see if api loops correctly
+        //will console log the data to see if api loops correctly
         //will go with chaining method so i don't have to keep going back to HTML
-        //google searched " trvia game api" opentdb was first opyion
+        //google searched " trvia game api" opentdb was first option
             fetch(`https://opentdb.com/api.php?amount=1&category=${category.id}&difficulty=${level}&type=multiple`)
             .then(response => response.json())
             .then(data => {
@@ -74,7 +80,7 @@ function newCategory(category) {
                 card.setAttribute('question', data.results[0].question)
                 card.setAttribute('answer', data.results[0].correct_answer)
                 //added point value below and checked console. it worked. point value shows up in div class
-                card.setAttribute('points-value', card.getInnerHTML())
+                card.setAttribute('points', card.getInnerHTML())
                
         })
 
@@ -103,6 +109,10 @@ function flipCard() {
     buttonB.innerHTML = 'B'
     buttonC.innerHTML = 'C'
 
+    buttonA.addEventListener('click', revealAnswer)
+    buttonB.addEventListener('click', revealAnswer)
+    buttonC.addEventListener('click', revealAnswer)
+
     //using js "getAttribute" method to insert question on card
     textDisplay.innerHTML = this.getAttribute('question')
 
@@ -110,10 +120,7 @@ function flipCard() {
 
 //disable eventlistener bc display repeats after each click
 /* followed following example from stack overflow:
- https://stackoverflow.com/questions/4402287/javascript-remove-event-listener
-
- however; 
-
+ https://stackoverflow.com/questions/4402287/javascript-remove-event-listener :
 
 function myClick(event) {
     click_count++;
@@ -125,14 +132,18 @@ function myClick(event) {
 
 // to add
 canvas.addEventListener('click', myClick);
-
-
 */
-const allCards = Array.from(document.querySelectorAll('.card'))
-allCards.forEach(card => card.removeEventListener('click', flipCard))
+const triviaCards = Array.from(document.querySelectorAll('.card'))
+triviaCards.forEach(card => card.removeEventListener('click', flipCard))
 
-buttonA.addEventListener('click', revealAnswer)
-buttonB.addEventListener('click', revealAnswer)
-buttonC.addEventListener('click', revealAnswer)
 
 }
+ //creating function for clicking and showing right or wrong answer
+function revealAnswer() {
+    const triviaCardButton = this.parentElement
+    if((triviaCardButton.getAttribute('answer') === this.innerHTML) {
+        console.log('You are right!')
+    }
+}
+
+    
