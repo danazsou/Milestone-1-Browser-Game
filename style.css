@@ -1,9 +1,15 @@
+/*
+using this as temporary css to see work
+
+*/
+
+
 body {
     margin: 0;
     padding: 0;
     background-color: rgb(17, 146, 226);
     color: rgb(246, 234, 234);
-    font-family: sans-serif, Arial, Helvetica; 
+    font-family: Arial, Helvetica, sans-serif;
     display: flex;
     justify-content: center;
     align-items:center;
@@ -11,10 +17,10 @@ body {
 }
 
 
-.genre-column{
+.category-column{
     display: flex;
     flex-direction: column;
-    text-align: center;
+    text-align:center;
 }
  
 .card {
@@ -22,11 +28,16 @@ body {
     height:200px; 
     border-radius: 20px;
     background-color: rgb(231, 224, 215);
-    color: black;
+    color: rgb(3, 14, 91);
     text-align: center;
     padding: 5px;
     margin: 10px;
+    font-weight: bold ;
+    
+}
 
+.correct-answer{
+    background-color: rgb(163, 173, 236);
 }
 
 #game {

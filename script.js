@@ -2,6 +2,8 @@ const game = document.getElementById('game')
 
 const scoreBoard = document.getElementById('score')
 
+let score = 0
+
 //creating  an object array to create different categories/columns using category id number in API
 
 /* refferred tp stackoverflow for making array for category:
@@ -41,9 +43,11 @@ const levels = ['easy', 'medium', 'hard']
 
 
 function newCategory(category) {
-
+  //refferred to mdn for js methods 
+  
     const column = document.createElement('div')
     column.classList.add('category-column')
+//add columns with .append to create columns for different game category
     column.innerHTML = category.name
     game.append(column)
 
@@ -56,7 +60,7 @@ function newCategory(category) {
        card.classList.add('card')
        column.append(card)
 
-       //if statements for point system
+       
        if (level === 'easy') {
         card.innerHTML = 100
        }
@@ -71,7 +75,7 @@ function newCategory(category) {
 
       
         //will console log the data to see if api loops correctly
-        //will go with chaining method so i don't have to keep going back to HTML
+        //will go with chaining methods so i don't have to keep going back to HTML
         //google searched " trvia game api" opentdb was first option
             fetch(`https://opentdb.com/api.php?amount=1&category=${category.id}&difficulty=${level}&type=multiple`)
             .then(response => response.json())
@@ -79,24 +83,24 @@ function newCategory(category) {
                 console.log(data)
                 card.setAttribute('question', data.results[0].question)
                 card.setAttribute('answer', data.results[0].correct_answer)
+           
                 //added point value below and checked console. it worked. point value shows up in div class
                 card.setAttribute('points', card.getInnerHTML())
                
         })
 
         //set event listener for button event type 'click'
-        card.addEventListener('click', flipCard)
+        card.addEventListener('click', showCardQuestion)
 
 
     })
-
 
 }
 
 //create loop for array objects(categories) to pass through newCategory function
 category.forEach(category => newCategory(category))
 
-function flipCard() {
+function showCardQuestion() {
     console.log('clicked')
 
 
@@ -118,32 +122,19 @@ function flipCard() {
 
     this.append(textDisplay, buttonA, buttonB, buttonC)
 
-//disable eventlistener bc display repeats after each click
-/* followed following example from stack overflow:
- https://stackoverflow.com/questions/4402287/javascript-remove-event-listener :
 
-function myClick(event) {
-    click_count++;
-    if(click_count == 50) {
-       // to remove
-       canvas.removeEventListener('click', myClick); 
-    }
-}
 
-// to add
-canvas.addEventListener('click', myClick);
-*/
-const triviaCards = Array.from(document.querySelectorAll('.card'))
-triviaCards.forEach(card => card.removeEventListener('click', flipCard))
+
+ 
 
 
 }
  //creating function for clicking and showing right or wrong answer
 function revealAnswer() {
-    const triviaCardButton = this.parentElement
-    if((triviaCardButton.getAttribute('answer') === this.innerHTML) {
-        console.log('You are right!')
+    
+
     }
-}
+      
+
 
     
