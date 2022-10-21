@@ -79,6 +79,7 @@ function newCategory(category) {
         //google searched " trvia game api" opentdb was first option
             fetch(`https://opentdb.com/api.php?amount=1&category=${category.id}&difficulty=${level}&type=multiple`)
             .then(response => response.json())
+            
             .then(data => {
                 console.log(data)
                 card.setAttribute('question', data.results[0].question)
@@ -123,12 +124,15 @@ function showCardQuestion() {
     this.append(textDisplay, buttonA, buttonB, buttonC)
 
 
-
-
- 
+    const triviaCards = Array.from(document.querySelectorAll('.card'))
+    triviaCards.forEach(card => card.removeEventListener('click', showCardQuestion))
+    
 
 
 }
+
+
+
  //creating function for clicking and showing right or wrong answer
 function revealAnswer() {
     

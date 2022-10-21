@@ -4,6 +4,13 @@ using this as temporary css to see work
 */
 
 
+h1{
+    font-size:xx-large;
+    font-weight: bold;
+    color: rgb(231, 231, 60);
+}
+
+
 body {
     margin: 0;
     padding: 0;
