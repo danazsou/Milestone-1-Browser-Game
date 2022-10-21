@@ -50,3 +50,7 @@ body {
 #game {
     display: flex;
 }
+
+.buttonA {
+    color: blue;
+}

@@ -101,7 +101,13 @@ function newCategory(category) {
 //create loop for array objects(categories) to pass through newCategory function
 category.forEach(category => newCategory(category))
 
-function showCardQuestion() {
+
+function showALLCards(){
+
+    
+}
+
+/*function showCardQuestion() {
     console.log('clicked')
 
 
@@ -123,13 +129,12 @@ function showCardQuestion() {
 
     this.append(textDisplay, buttonA, buttonB, buttonC)
 
-
-    const triviaCards = Array.from(document.querySelectorAll('.card'))
-    triviaCards.forEach(card => card.removeEventListener('click', showCardQuestion))
+*/
+   
     
 
 
-}
+
 
 
 
