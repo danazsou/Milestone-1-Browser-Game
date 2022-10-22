@@ -77,14 +77,17 @@ function newCategory(category) {
         //will console log the data to see if api loops correctly
         //will go with chaining methods so i don't have to keep going back to HTML
         //google searched " trvia game api" opentdb was first option
-            fetch(`https://opentdb.com/api.php?amount=1&category=${category.id}&difficulty=${level}&type=multiple`)
+
+
+            //fetch(`https://opentdb.com/api.php?amount=1&category=${category.id}&difficulty=${level}&type=multiple`)
+            fetch(`https://opentdb.com/api.php?amount=1&category=${category.id}&difficulty=${level}&type=boolean`)
             .then(response => response.json())
             
             .then(data => {
                 console.log(data)
                 card.setAttribute('question', data.results[0].question)
                 card.setAttribute('answer', data.results[0].correct_answer)
-                card.setAttribute('answer', data.results[0].incorrect_answers)
+              
            
                 //added point value below and checked console. it worked. point value shows up in div class
                 card.setAttribute('points', card.getInnerHTML())
@@ -92,7 +95,7 @@ function newCategory(category) {
         })
 
         //set event listener for button event type 'click'
-        .then(done => card.addEventListener('click', showCardQuestion))
+        .then(done => card.addEventListener('click', showCardInfo))
 
 
     })
@@ -101,64 +104,59 @@ function newCategory(category) {
 
 category.forEach(category =>newCategory(category))
 
-function showCardQuestion() {
+function showCardInfo() {
     this.innerHTML = ''
-    this.style.fontSize = '15px'
+    this.style.fontSize = '12px'
     const textDisplay = document.createElement('div')
-    const buttonA = document.createElement('button')
-    const buttonB = document.createElement('button')
-    const buttonC = document.createElement('button')
-    const buttonD = document.createElement('button')
+    const buttonTrue = document.createElement('button')
+    const buttonFalse = document.createElement('button')
+  
 
 
-    buttonA.innerHTML = 'A'
-    buttonB.innerHTML = 'B'
-    buttonC.innerHTML = 'C'
-    buttonD.innerHTML = 'D'
+    buttonTrue.innerHTML = 'TRUE'
+    buttonFalse.innerHTML = 'FALSE'
+   
 
 
-    buttonA.classList.add('button')
-    buttonB.classList.add('button')
-    buttonC.classList.add('button')
-    buttonD.classList.add('button')
-
-  //buttonA.addEventListener('click', showCardQuestion)
-  // buttonB.addEventListener('click', showCardQuestion)
-   //buttonC.addEventListener('click', showCardQuestion)
-   //buttonD.addEventListener('click', showCardQuestion)
+    buttonTrue.classList.add('buttonT')
+    buttonFalse.classList.add('buttonF')
+   
+    buttonTrue.addEventListener('click', getResult)
+    buttonFalse.addEventListener('click', getResult)
+  
 
     textDisplay.innerHTML = this.getAttribute('question')
-    this.append(textDisplay, buttonA, buttonB, buttonC, buttonD)
+    this.append(textDisplay, buttonTrue, buttonFalse)
 
-    const allCards = Array.from(document.querySelectorAll('.card'))
-    
+    const triviaCards = Array.from(document.querySelectorAll('.card'))
+  
 }
 
 function getResult() {
-    const allCards = Array.from(document.querySelectorAll('.card'))
-    allCards.forEach(card => card.addEventListener('click', showCardQuestion))
+    const triviaCards = Array.from(document.querySelectorAll('.card'))
+    triviaCards.forEach(card => card.addEventListener('click', showCardInfo))
 
-    const cardOfButton = this.parentElement
-    if (cardOfButton.getAttribute('answer') === this.innerHTML) {
-        score = score + parseInt(cardOfButton.getAttribute('points'))
+    const triviaCardButton = this.parentElement
+    if (triviaCardButton.getAttribute('answer') === this.innerHTML) {
+        score = score + parseInt(triviaCardButton.getAttribute('points'))
         scoreDisplay.innerHTML = score
-        cardOfButton.classList.add('correct-answer')
+        triviaCardButton.classList.add('correct-answer')
         setTimeout(() => {
-            while (cardOfButton.firstChild) {
-                cardOfButton.removeChild(cardOfButton.lastChild)
+            while (triviaCardButton.firstChild) {
+                triviaCardButton.removeChild(triviaCardButton.lastChild)
             }
-            cardOfButton.innerHTML = cardOfButton.getAttribute('points')
+            triviaCardButton.innerHTML = triviaCardButton.getAttribute('points')
         }, 100)
     } else {
-        cardOfButton.classList.add('wrong-answer')
+        triviaCardButton.classList.add('wrong-answer')
         setTimeout(() => {
-            while (cardOfButton.firstChild) {
-                cardOfButton.removeChild(cardOfButton.lastChild)
+            while (triviaCardButton.firstChild) {
+                triviaCardButton.removeChild(triviaCardButton.lastChild)
             }
-            cardOfButton.innerHTML = 0
+            triviaCardButton.innerHTML = 0
         }, 100)
     }
-    cardOfButton.removeEventListener('click',showCardQuestion)
+    triviaCardButton.removeEventListener('click',showCardInfo)
 
 
 
