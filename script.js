@@ -84,6 +84,7 @@ function newCategory(category) {
                 console.log(data)
                 card.setAttribute('question', data.results[0].question)
                 card.setAttribute('answer', data.results[0].correct_answer)
+                card.setAttribute('answer', data.results[0].incorrect_answers)
            
                 //added point value below and checked console. it worked. point value shows up in div class
                 card.setAttribute('points', card.getInnerHTML())
@@ -107,12 +108,57 @@ function showCardQuestion() {
     const buttonA = document.createElement('button')
     const buttonB = document.createElement('button')
     const buttonC = document.createElement('button')
+    const buttonD = document.createElement('button')
 
 
     buttonA.innerHTML = 'A'
     buttonB.innerHTML = 'B'
     buttonC.innerHTML = 'C'
+    buttonD.innerHTML = 'D'
 
+
+    buttonA.classList.add('button')
+    buttonB.classList.add('button')
+    buttonC.classList.add('button')
+    buttonD.classList.add('button')
+
+  //buttonA.addEventListener('click', showCardQuestion)
+  // buttonB.addEventListener('click', showCardQuestion)
+   //buttonC.addEventListener('click', showCardQuestion)
+   //buttonD.addEventListener('click', showCardQuestion)
+
+    textDisplay.innerHTML = this.getAttribute('question')
+    this.append(textDisplay, buttonA, buttonB, buttonC, buttonD)
+
+    const allCards = Array.from(document.querySelectorAll('.card'))
+    
+}
+
+function getResult() {
+    const allCards = Array.from(document.querySelectorAll('.card'))
+    allCards.forEach(card => card.addEventListener('click', showCardQuestion))
+
+    const cardOfButton = this.parentElement
+    if (cardOfButton.getAttribute('answer') === this.innerHTML) {
+        score = score + parseInt(cardOfButton.getAttribute('points'))
+        scoreDisplay.innerHTML = score
+        cardOfButton.classList.add('correct-answer')
+        setTimeout(() => {
+            while (cardOfButton.firstChild) {
+                cardOfButton.removeChild(cardOfButton.lastChild)
+            }
+            cardOfButton.innerHTML = cardOfButton.getAttribute('points')
+        }, 100)
+    } else {
+        cardOfButton.classList.add('wrong-answer')
+        setTimeout(() => {
+            while (cardOfButton.firstChild) {
+                cardOfButton.removeChild(cardOfButton.lastChild)
+            }
+            cardOfButton.innerHTML = 0
+        }, 100)
+    }
+    cardOfButton.removeEventListener('click',showCardQuestion)
 
 
 
