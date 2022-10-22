@@ -33,7 +33,7 @@ const category = [
 {
     name:'Computer Science',
     id: 18
-},
+}
 
 
 ]
@@ -91,59 +91,35 @@ function newCategory(category) {
         })
 
         //set event listener for button event type 'click'
-        card.addEventListener('click', showCardQuestion)
+        .then(done => card.addEventListener('click', showCardQuestion))
 
 
     })
 
 }
 
-//create loop for array objects(categories) to pass through newCategory function
-category.forEach(category => newCategory(category))
+category.forEach(category =>newCategory(category))
 
-
-function showALLCards(){
-
-    
-}
-
-/*function showCardQuestion() {
-    console.log('clicked')
-
-
+function showCardQuestion() {
+    this.innerHTML = ''
+    this.style.fontSize = '15px'
     const textDisplay = document.createElement('div')
     const buttonA = document.createElement('button')
     const buttonB = document.createElement('button')
     const buttonC = document.createElement('button')
 
+
     buttonA.innerHTML = 'A'
     buttonB.innerHTML = 'B'
     buttonC.innerHTML = 'C'
 
-    buttonA.addEventListener('click', revealAnswer)
-    buttonB.addEventListener('click', revealAnswer)
-    buttonC.addEventListener('click', revealAnswer)
 
-    //using js "getAttribute" method to insert question on card
-    textDisplay.innerHTML = this.getAttribute('question')
 
-    this.append(textDisplay, buttonA, buttonB, buttonC)
 
-*/
-   
-    
+}
 
 
 
 
-
-
- //creating function for clicking and showing right or wrong answer
-function revealAnswer() {
-    
-
-    }
       
 
-
-    
