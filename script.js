@@ -2,14 +2,13 @@ const game = document.getElementById('game')
 const scoreDisplay = document.getElementById('score')
 let score = 0
 
+
 //creating  an object array to create different categories/columns using category id number in API
 
 /* refferred tp stackoverflow for making array for category:
 https://stackoverflow.com/questions/62781078/create-api-for-multidimensonal-array-using-category-subcategory-and-further-sub
 
 */
-
-
 const category = [
     {
         name: 'Science and Nature',
@@ -24,27 +23,26 @@ const category = [
     id: 22
     },
     {
-        name:'Computer Science',
-        id: 18
+      name:'Computer Science',
+    id: 18
     }
 ]
 
 const levels = ['easy', 'medium', 'hard']
 
 function newCategory(category) {
-
-     //refferred to mdn for js methods 
+    //refferred to mdn for js methods 
     const column = document.createElement('div')
     column.classList.add('category-column')
+    //add columns with .append to create columns for different game category
     column.innerHTML = category.name
-//add columns with .append to create columns for different game category
     game.append(column)
 
-    //use api for ease or factor out questions manually for practice? both?hm
+     //use api for ease or factor out questions manually for practice? both?hm
     //use below api to loop through levels array using .forEach 
     levels.forEach(level => {
 
-         //locally scoped below so okay to use const vs let
+        //locally scoped below so okay to use const vs let 
         const card = document.createElement('div')
         card.classList.add('card')
         column.append(card)
@@ -59,12 +57,12 @@ function newCategory(category) {
             card.innerHTML = 300
         }
 
+
          //will console log the data to see if api loops correctly
         //will go with chaining methods so i don't have to keep going back to HTML
         // reffered to mdn for chaining methods and syntax : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain
         //google searched " trvia game api" opentdb was first option
   
-
         fetch(`https://opentdb.com/api.php?amount=1&category=${category.id}&difficulty=${level}&type=boolean`)
             .then(response => response.json())
             .then(data => {
@@ -72,7 +70,9 @@ function newCategory(category) {
                 console.log(data)
                 card.setAttribute('data-question', data.results[0].question)
                 card.setAttribute('data-answer', data.results[0].correct_answer)
-                card.setAttribute('data-value', card.getInnerHTML())
+
+                 //added points value below and checked console. it worked. point value shows up in div class
+                card.setAttribute('points-value', card.getInnerHTML())
             })
             .then(done => card.addEventListener('click', showCardInfo))
 
@@ -96,32 +96,29 @@ function showCardInfo() {
     textDisplay.innerHTML = this.getAttribute('data-question')
     this.append(textDisplay, trueButton, falseButton)
 
-
-    //below code will stop repetitive display of cards text display when clicking
+     //below code will stop repetitive display of card text display when clicking
     const triviaCards = Array.from(document.querySelectorAll('.card'))
-   //console.log(triviacards)  -- make sure it was catching all div cards 
-
+    //console.log(triviacards)  -- make sure it was catching all div cards
     triviaCards.forEach(card => card.removeEventListener('click', showCardInfo))
 }
 
 function getResult() {
-
-    
+    const triviaCards = Array.from(document.querySelectorAll('.card'))
     triviaCards.forEach(card => card.addEventListener('click', showCardInfo))
 
-    //refferal for using parent child elements in Js that I used 
+ //refferal for using parent child elements in Js that I used :
     //https://www.youtube.com/watch?v=7kW6DByQPkw & https://stackoverflow.com/questions/16302045/finding-child-element-of-parent-with-javascript
-    const triviaCards = Array.from(document.querySelectorAll('.card'))
+
     const triviaCardButton = this.parentElement
     if (triviaCardButton.getAttribute('data-answer') === this.innerHTML) {
-        score = score + parseInt(triviaCardButton.getAttribute('data-value'))
+        score = score + parseInt(triviaCardButton.getAttribute('points-value'))
         scoreDisplay.innerHTML = score
         triviaCardButton.classList.add('correct-answer')
         setTimeout(() => {
             while (triviaCardButton.firstChild) {
                 triviaCardButton.removeChild(triviaCardButton.lastChild)
             }
-            triviaCardButton.innerHTML = triviaCardButton.getAttribute('data-value')
+            triviaCardButton.innerHTML = triviaCardButton.getAttribute('points-value')
         }, 100)
     } else {
         triviaCardButton.classList.add('wrong-answer')
