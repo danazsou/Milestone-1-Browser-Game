@@ -1,7 +1,4 @@
-/*
-using this as temporary css to see work
 
-*/
 
 
 h1{
@@ -34,6 +31,8 @@ body {
     display: flex;
     flex-direction: column;
     text-align:center;
+    color: #ecf14f;
+    font-size: xx-large;
 }
  
 .card {
@@ -42,7 +41,7 @@ body {
     border-radius: 20px;
     background-color:#F4EDED;
     color: #110e0e;
-    font-size: 30px;
+    font-size: 50px;
     text-align: center;
     padding: 5px;
     margin: 10px;
@@ -51,19 +50,22 @@ body {
 }
 
 .correct-answer{
-    background-color: rgb(200, 251, 207);
+    background-color: rgb(14, 200, 39);
 }
 
 .wrong-answer {
     background-color: #F24236;
+    
 }
 
 .true-button {
-    background-color: #d7cfef;
+    background-color: #eeebf9;
+    font-size: 30px;
 }
 
 .false-button {
-    background-color: #6ea7f7;
+    background-color: #93bffe;
+    font-size: 30px;
 }
 
 #game {

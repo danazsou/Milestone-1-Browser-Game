@@ -61,7 +61,7 @@ function newCategory(category) {
          //will console log the data to see if api loops correctly
         //will go with chaining methods so i don't have to keep going back to HTML
         // reffered to mdn for chaining methods and syntax : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain
-        //google searched " trvia game api" opentdb was first option
+      // reffered to youtube tutorial for setAttribute : https://www.youtube.com/watch?v=V0S0LXvnW-o
   
         fetch(`https://opentdb.com/api.php?amount=1&category=${category.id}&difficulty=${level}&type=boolean`)
             .then(response => response.json())
@@ -87,12 +87,16 @@ function showCardInfo() {
     const textDisplay = document.createElement('div')
     const trueButton = document.createElement('button')
     const falseButton = document.createElement('button')
+
     trueButton.innerHTML = 'True'
     falseButton.innerHTML = 'False'
+
     trueButton.classList.add('true-button')
     falseButton.classList.add('false-button')
+
     trueButton.addEventListener('click', getResult)
     falseButton.addEventListener('click', getResult)
+    
     textDisplay.innerHTML = this.getAttribute('data-question')
     this.append(textDisplay, trueButton, falseButton)
 
