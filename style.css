@@ -5,18 +5,24 @@ using this as temporary css to see work
 
 
 h1{
-    font-size:xx-large;
+    font-size:75px;
     font-weight: bold;
-    color: rgb(231, 231, 60);
+    color: #F5F749;
+}
+
+h2{
+    color:#F6F5AE ;
 }
 
 
 body {
     margin: 0;
     padding: 0;
-    background-color: rgb(17, 146, 226);
-    color: rgb(246, 234, 234);
+    background-color: #2E86AB;
+    color: #1d1c1c;
     font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 22px;
     display: flex;
     justify-content: center;
     align-items:center;
@@ -34,8 +40,9 @@ body {
     width: 300px;
     height:200px; 
     border-radius: 20px;
-    background-color: rgb(231, 224, 215);
-    color: rgb(3, 14, 91);
+    background-color:#F4EDED;
+    color: #110e0e;
+    font-size: 30px;
     text-align: center;
     padding: 5px;
     margin: 10px;
@@ -44,13 +51,21 @@ body {
 }
 
 .correct-answer{
-    background-color: rgb(163, 173, 236);
+    background-color: rgb(200, 251, 207);
+}
+
+.wrong-answer {
+    background-color: #F24236;
+}
+
+.true-button {
+    background-color: #d7cfef;
+}
+
+.false-button {
+    background-color: #6ea7f7;
 }
 
 #game {
     display: flex;
-}
-
-.buttonA {
-    color: blue;
 }
