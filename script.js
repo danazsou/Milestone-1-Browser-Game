@@ -80,10 +80,12 @@ function newCategory(category) {
 }
 category.forEach(category => newCategory(category))
 
+//function below will display question with button options
 
 function showCardInfo() {
     this.innerHTML = ''
-    this.style.fontSize = '15px'
+    //grabbing trivia question to style as well as create buttons
+    this.style.fontSize = '22px'
     const textDisplay = document.createElement('div')
     const trueButton = document.createElement('button')
     const falseButton = document.createElement('button')
@@ -96,7 +98,7 @@ function showCardInfo() {
 
     trueButton.addEventListener('click', getResult)
     falseButton.addEventListener('click', getResult)
-    
+
     textDisplay.innerHTML = this.getAttribute('data-question')
     this.append(textDisplay, trueButton, falseButton)
 
