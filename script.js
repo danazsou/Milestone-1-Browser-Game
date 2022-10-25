@@ -79,7 +79,7 @@ function newCategory(category) {
                  //added points value below and checked console. it worked. point value shows up in div class
                 card.setAttribute('points-value', card.getInnerHTML())
             })
-            .then(done => card.addEventListener('click', showCardInfo))
+            card.addEventListener('click', showCardInfo)
 
     })
 }
