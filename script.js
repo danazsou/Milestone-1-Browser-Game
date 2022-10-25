@@ -32,13 +32,18 @@ const levels = ['easy', 'medium', 'hard']
 
 function newCategory(category) {
     //refferred to mdn for js methods 
+    //createElement method to create html div 
+
     const column = document.createElement('div')
+
+    //js classList method to add class list
     column.classList.add('category-column')
     //add columns with .append to create columns for different game category
+    //reference for innerHTML method: https://www.youtube.com/watch?v=SrSBhuuuIsg & https://www.youtube.com/watch?v=1UsllDMhvN4
     column.innerHTML = category.name
     game.append(column)
 
-     //use api for ease or factor out questions manually for practice? both?hm
+     //use api for ease or factor out questions manually for practice? both?
     //use below api to loop through levels array using .forEach 
     levels.forEach(level => {
 
