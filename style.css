@@ -41,12 +41,13 @@ body {
     border-radius: 20px;
     background-color:#F4EDED;
     color: #110e0e;
-    font-size: 65px;
+    font-size: 75px;
     text-align:center;
     padding: 5px;
     margin: 10px;
     font-weight: bold ;
     border:rgb(82, 80, 80) solid 5px;
+  
    
     
 }
